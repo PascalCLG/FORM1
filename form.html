@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="css/site.css">
+
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <h3>Inscription</h3>
+    </div>
+    <div id="content">
+
+      <form class="form" id="subscribeform" action="submitData.php" method="POST">
+
+        <fieldset>
+          <legend>Prénom</legend>
+          <input class="formControl Alpha" name="FirstName" placeholder="Prénom" 
+            required
+            RequireMessage="Veuillez entrer votre prénom" 
+            InvalidMessage="Caractères illégaux" />
+        </fieldset>
+
+        <fieldset>
+          <legend>Nom</legend>
+          <input class="formControl Alpha" name="LastName" placeholder="Nom" 
+            required
+            RequireMessage="Veuillez entrer votre nom" 
+            InvalidMessage="Caractères illégaux" />
+        </fieldset>
+
+        <fieldset>
+          <legend>Téléphone</legend>
+          <input class="formControl Phone" name="Phone" placeholder="(000) 000-0000" 
+            required />
+        </fieldset>
+
+        <fieldset>
+          <legend>Code postal</legend>
+          <input class="formControl Zipcode" name="ZipCode" placeholder="a1a 1a1" style="text-transform: uppercase"
+            required />
+        </fieldset>
+
+        <fieldset>
+          <legend>Date d'expiration</legend>
+          <input class="formControl datepicker" name="Expire" id="Expire" required>
+        </fieldset>
+
+        <fieldset>
+          <legend>Courriel</legend>
+          <input type="email" class="formControl Email" name="Email" id="Email" placeholder="Courriel" 
+          required
+            InvalidMessage="Courriel invalide" />
+          <input class="formControl MatchedInput" name="matchedEmail" placeholder="Vérification"
+            required 
+            matchedInputId="Email"
+            InvalidMessage="Ne correspond pas au courriel" />
+        </fieldset>
+
+        <fieldset>
+          <legend>Mot de passe</legend>
+          <input type="password" class="formControl" name="Password" id="Password" placeholder="Mot de passe"
+            required />
+          <input class="formControl MatchedInput" type="password" name="matchedPassword"
+            id="matchedPassword" placeholder="Vérification" 
+            matchedInputId="Password" 
+            required
+            InvalidMessage="Ne correspond pas au mot de passe" />
+        </fieldset>
+
+        <fieldset>
+          <legend>Genre</legend>
+          <div class="groupbox">
+
+            <input class="formControl" type="radio" name="Sex" id="Sex1" value="Masculin" 
+              required
+              RequireMessage="Veuillez entrer un genre" />
+            <label for="Sex1">Masculin</label>
+
+            <input class="formControl" type="radio" name="Sex" id="Sex2" value="Féminin" />
+            <label for="Sex2">Féminin</label>
+
+            <input class="formControl" type="radio" name="Sex" id="Sex3" value="autre" />
+            <label for="Sex3">autre</label>
+
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Pays</legend>
+          <select class="formControl" name="Country" 
+            required 
+            RequireMessage="Veuillez sélectionner un pays">
+
+            <option value="" selected>Sélectionnez votre pays</option>
+            <option value="Canada">Canada</option>
+            <option value="États-Unis">États-Unis</option>
+            <option value="France">France</option>
+            <option value="Royaume-Unis">Royaume-Unis</option>
+            <option value="Espagne">Espagne</option>
+
+          </select>
+        </fieldset>
+        <fieldset>
+          <legend>Options</legend>
+          <div class="groupbox">
+            <input class="formControl" type="checkbox" name="RememberMe" id="RememberMe" />
+            <label for="RememberMe">Se souvenir de moi</label>
+            <input class="formControl" type="checkbox" name="SubscribeToNewsLetter" id="SubscribeToNewsLetter" />
+            <label for="SubscribeToNewsLetter">Recevoir les bulletins</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Conditions d'utilisation</legend>
+          <div class="groupbox">
+            <input class="formControl" type="checkbox" name="ConditionsAccepted" id="ConditionsAccepted" 
+              required
+              RequireMessage="Veuillez accepter les conditions d'utilisation" />
+            <label for="ConditionsAccepted">j'accepte</label>
+          </div>
+        </fieldset>
+        <br />
+        <input class="formControl" type="submit" value="Soumettre..." />
+      </form>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script src="js/validation.js"></script>
+
+  <script defer>
+    initFormValidation();
+    let now = new Date();
+    $("#Expire").val(now.toISOString().substr(0, now.toISOString().indexOf('T')));
+  </script>
+</body>
+
+</html>
